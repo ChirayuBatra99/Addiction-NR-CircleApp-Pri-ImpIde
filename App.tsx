@@ -5,6 +5,7 @@
  * @format
  */
 import MainContainer from './src/Tabs/MainContainer';
+import TimerDials from './src/Components/TimerDials';
 
 import React from 'react';
 import type {PropsWithChildren} from 'react';
@@ -65,9 +66,7 @@ function App(): React.JSX.Element {
 
   return (
     <MainContainer />
-  //  <Text>
-  //       wkcdj vv
-  //  </Text>
+   
   );
 }
 
