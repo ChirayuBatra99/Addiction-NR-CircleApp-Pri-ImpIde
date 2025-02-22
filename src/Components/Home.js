@@ -7,10 +7,10 @@ import Quotes from './Quotes';
 
 const Home = () => {
     return (  
-        <View style={{ flex: 1}}>
+        <View style={{ flex: 1, color: 'white'}}>
             <Image source={Bg} alt="kajesdbc" style={styles.backStyles} />
             <Quotes />
-             <MidCircleHome/> 
+            <MidCircleHome/> 
 
          </View>     
     );

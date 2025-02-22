@@ -98,7 +98,8 @@ const styles = StyleSheet.create({
         width: '80%',
         fontSize: 20,
         fontWeight: 600,
-        paddingRight: 3
+        paddingRight: 3,
+        color: 'white'
     },
     statsIconStyles: {
         height: '100%',

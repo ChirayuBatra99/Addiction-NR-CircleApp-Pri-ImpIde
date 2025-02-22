@@ -40,16 +40,95 @@ const TimePlate = () => {
         minutes = minutes < 10 ? `0${minutes}` : minutes;
         seconds = seconds < 10 ? `0${seconds}` : seconds;
         days = days < 10 ? `0${days}` : days;
-        return `${days}:${hours}:${minutes}:${seconds}`;
+        return `${days} : ${hours} : ${minutes} : ${seconds}`;
+    }
+    function formatDays() {
+        let days = Math.floor(time / (3600 * 24));
+        days = days < 10 ? `0` : days;
+        return days;
+    }
+
+    function formatHours() {
+        let hours = Math.floor(time / 3600) % 24;
+        hours = hours < 10 ? `0${hours}` : hours;
+        return hours;
+    }
+
+    function formatMinutes() {
+        let minutes = Math.floor((time % 3600) / 60);
+        minutes = minutes < 10 ? `0${minutes}` : minutes;
+        return minutes;
+    }
+
+    function formatSeconds() {
+        let seconds = time % 60;
+        seconds = seconds < 10 ? `0${seconds}` : seconds;
+        return seconds;
     }
 
   return (
-    <View>
-      <Text>{formatTime()}</Text>
+    <View style={styles.container}>
+      <View style= {styles.bg}/>
+      <View style={styles.onefour}>
+         <Text style={styles.digitText}>{formatDays()} :</Text>
+         <Text style={styles.underText}>Days</Text>
+      </View>
+      {/* <Text>:</Text> */}
+      <View style={styles.onefour}>
+         <Text style={styles.digitText}>{formatHours()} :</Text>
+         <Text style={styles.underText}>Hours</Text>
+      </View>
+      {/* <Text>:</Text> */}
+      <View style={styles.onefour}>
+         <Text style={styles.digitText}>{formatMinutes()} :</Text>
+         <Text style={styles.underText}>minutes</Text>
+      </View>
+      {/* <Text>:</Text> */}
+      <View style={styles.onefour}>
+         <Text style={styles.digitText}>{formatSeconds()} </Text>
+         <Text style={styles.underText}>Seconds</Text>
+      </View>
+      
     </View>
   )
 }
 
 export default TimePlate;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    underText: {
+        color: 'white',
+    },
+    digitText: {
+        fontWeight: 700,
+        fontSize: 30,
+        padding: '1%',
+        color: 'white',
+
+    },
+    onefour:{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        marginHorizontal: '1%',
+    },
+    bg: {
+        position: 'absolute',
+        backgroundColor: 'black',
+        height: '100%',
+        width: '55%',
+        opacity: 0.5,
+        borderWidth: 2,
+        borderRadius: 8,
+    },
+    container: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        borderWidth: 0.7,
+        borderColor: 'white',
+        borderRadius: 10,
+        padding: 6,
+        margin: '4%'
+    },
+})

@@ -9,29 +9,32 @@ const MidCircles = () => {
         <View style={styles.plate}>
             <AnimatedCircularProgress
                 style={styles.outer}
-                size={200}
-                width={15}
+                size={330}
+                width={30}
                 fill={90}
                 rotation={0}
-                tintColor="#00e0ff"
+                lineCap='round'
+                tintColor="#98ab82"
                 onAnimationComplete={() => console.log('onAnimationComplete')}
                 backgroundColor="#3d5875" />
             <AnimatedCircularProgress
                 style={styles.mid}
-                size={120}
-                width={15}
+                size={260}
+                width={30}
                 fill={90}
                 rotation={0}
-                tintColor="#00e0ff"
+                lineCap='round'
+                tintColor="#bf4747"
                 onAnimationComplete={() => console.log('onAnimationComplete')}
                 backgroundColor="#3d5875" />
             <AnimatedCircularProgress
                 style={styles.inner}
-                size={80}
-                width={15}
+                size={190}
+                width={30}
                 fill={90}
+                lineCap='round'
                 rotation={0}
-                tintColor="#00e0ff"
+                tintColor="#6cb522"
                 onAnimationComplete={() => console.log('onAnimationComplete')}
                 backgroundColor="#3d5875" />
         </View>

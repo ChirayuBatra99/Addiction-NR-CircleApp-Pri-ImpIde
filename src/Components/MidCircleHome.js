@@ -153,18 +153,25 @@ const styles = StyleSheet.create({
     },
     hsmTexts: {
         fontSize: 13,
-        fontWeight: 500
+        fontWeight: 500,
+        color: 'white'
+
     },
     hsmDigits: {
         fontSize: 22,
         fontWeight: 'bold',
+        color: 'white'
+
     },
     daysCss: {
         fontSize: 45,
         fontWeight: 'bold',
+        color: 'white'
+
     },
     rowOne: {
         alignItems: 'center',
+        color: 'white'
 
     },
     rowTwo: {
@@ -178,12 +185,15 @@ const styles = StyleSheet.create({
     rowHMS: {
         marginBottom: '-5%',
         display: 'flex',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        color: 'white'
+
     },
     itHasBeen: {
-        color: 'black',
+        color: 'white',
         marginTop: '13%',
         fontSize: 33,
+
     },
     circle: {
         height: 300,
@@ -195,6 +205,7 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'space-between',
+        borderColor: 'grey'
         // position: 'relative'
     },
     circleTwo: {
@@ -206,6 +217,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'black',
         opacity: 0.1,
         borderRadius: 200,
+        color: 'white'
 
     },
     timerText: {
