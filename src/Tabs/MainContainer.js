@@ -7,8 +7,9 @@ import { StyleSheet } from 'react-native';
 import Home from '../Components/Home';
 import Goal from '../Components/Goal/Goal';
 import Settings from '../Components/Settings/Settings';
-import SetGoalButton from '../Components/Goal/SetGoalButton';
-import SetGoalScreen from '../Components/Goal/SetGoalScreen';
+// import SetGoalButton from '../Components/Goal/SetGoalButton';
+// import SetGoalScreen from '../Components/Goal/SetGoalScreen';
+import Navigation from '../Components/Goal/Navigation';
 
 const Tab = createBottomTabNavigator();
 const homeName = "Home";
@@ -51,9 +52,9 @@ function MainContainer() {
                     component={Home}
                     options={{ headerShown: false }}
                 />
-                <Tab.Screen
+                 <Tab.Screen
                     name={goalName}
-                    component={Goal}
+                    component={Navigation}
                     options={{ headerShown: false }}
                 />
                 <Tab.Screen

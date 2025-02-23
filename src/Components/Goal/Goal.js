@@ -8,6 +8,7 @@ import SetGoalButton from './SetGoalButton';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import GradientMatching from './GradientMatching';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,6 +18,7 @@ const Goal = () => {
             <Image source={Bg} alt="kajesdbc" style={styles.backStyles} />
             <TimePlate />
             <MidCircles />
+            <GradientMatching />
             <SetGoalButton />
         </View>
     )

@@ -1,10 +1,18 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const MidCircles = () => {
+    const [targetDayz, setTargetDayz] = useState(0);
+
+    useEffect(() => {
+        const targetDays = AsyncStorage.getItem('goalInStorage');
+        setTargetDayz(targetDays);
+    }, []);
+    
     return (
         <View style={styles.plate}>
             <AnimatedCircularProgress
@@ -37,6 +45,7 @@ const MidCircles = () => {
                 tintColor="#6cb522"
                 onAnimationComplete={() => console.log('onAnimationComplete')}
                 backgroundColor="#3d5875" />
+            {/* <Text style={{color: 'white'}}>{targetDayz}</Text> */}
         </View>
     )
 }
@@ -54,7 +63,7 @@ const styles = StyleSheet.create({
 
     },
     plate: {
-        position: 'relative' ,
+        position: 'relative',
         // flex: 1,                Important change
         alignItems: 'center',
         justifyContent: 'center'

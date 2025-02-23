@@ -27,7 +27,7 @@ const MidCircleHome = () => {
         let interval;
         if (isRunning) {
             interval = setInterval(() => {
-                setTime(prev => prev + 1);
+                setTime(prev => prev + 10000);
                 formatTime();
             }, 1000);
         }
