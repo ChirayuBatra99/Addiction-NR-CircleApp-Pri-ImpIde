@@ -1,11 +1,13 @@
 import { StyleSheet, Text, View } from 'react-native';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { AppContext } from '../Context/AppContext';
 
 const TimePlate = () => {
     const [time, setTime] = useState(0);
     const [isRunning, setIsRunning] = useState(false);
-    
+    const {reset, setReset} = useContext(AppContext);
+
     useEffect(() => {
         const loadStartTime = async () => {
             const startTime = await AsyncStorage.getItem('startTime');
@@ -16,7 +18,7 @@ const TimePlate = () => {
             }
         };
         loadStartTime();
-    }, []);
+    }, [reset]);
 
      useEffect(() => {
             let interval;
@@ -44,7 +46,7 @@ const TimePlate = () => {
     }
     function formatDays() {
         let days = Math.floor(time / (3600 * 24));
-        days = days < 10 ? `0` : days;
+        days = days < 10 ? days : days;
         return days;
     }
 

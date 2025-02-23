@@ -6,6 +6,7 @@
  */
 import MainContainer from './src/Tabs/MainContainer';
 import TimerDials from './src/Components/TimerDials';
+import { AppProvider } from './src/Components/Context/AppContext';
 
 import React from 'react';
 import type {PropsWithChildren} from 'react';
@@ -65,7 +66,9 @@ function App(): React.JSX.Element {
   };
 
   return (
-    <MainContainer />
+    <AppProvider>
+        <MainContainer />
+    </AppProvider>
    
   );
 }

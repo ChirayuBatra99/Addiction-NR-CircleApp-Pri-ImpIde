@@ -8,6 +8,43 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const MidCircles = () => {
     const [targetDayz, setTargetDayz] = useState(0);
 
+    const [goal, setGoal] = useState(0);
+    const [time, setTime] = useState(0);
+    const [isRunning, setIsRunning] = useState(false);
+
+    useEffect(() => {
+        const getGoal = async() => {
+            const getGoal = await AsyncStorage.getItem('goalInStorage');
+            setGoal(getGoal);
+        }
+        getGoal();
+        const loadStartTime = async () => {
+            const startTime = await AsyncStorage.getItem('startTime');
+            if (startTime) {
+                const elapsed = Math.floor((Date.now() - parseInt(startTime)) / 1000);
+                setTime(elapsed);
+                setIsRunning(true);
+            }
+        };
+        loadStartTime();
+    },[]);
+    
+      useEffect(() => {
+               let interval;
+               if (isRunning) {
+                   interval = setInterval(() => {
+                       setTime(prev => prev + 1);
+                   }, 1000);
+               }
+               return () => clearInterval(interval);
+           }, [isRunning]);
+
+    function formatDays() {
+        let days = Math.floor(time / (3600 * 24));
+        days = days < 10 ? days : days;
+        return days;
+    }
+
     useEffect(() => {
         const targetDays = AsyncStorage.getItem('goalInStorage');
         setTargetDayz(targetDays);
@@ -29,7 +66,7 @@ const MidCircles = () => {
                 style={styles.mid}
                 size={260}
                 width={30}
-                fill={90}
+                fill={Math.floor((time*100)/(goal*24*60*60)) }
                 rotation={0}
                 lineCap='round'
                 tintColor="#bf4747"

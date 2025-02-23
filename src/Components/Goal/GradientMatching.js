@@ -5,6 +5,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 const GradientMatching = () => {
     const [goal, setGoal] = useState(0);
     const [time, setTime] = useState(0);
+    const [isRunning, setIsRunning] = useState(false);
+
     useEffect(() => {
         const getGoal = async() => {
             const getGoal = await AsyncStorage.getItem('goalInStorage');
@@ -21,10 +23,20 @@ const GradientMatching = () => {
         };
         loadStartTime();
     },[]);
+    
+      useEffect(() => {
+               let interval;
+               if (isRunning) {
+                   interval = setInterval(() => {
+                       setTime(prev => prev + 1);
+                   }, 1000);
+               }
+               return () => clearInterval(interval);
+           }, [isRunning]);
 
     function formatDays() {
         let days = Math.floor(time / (3600 * 24));
-        days = days < 10 ? `0` : days;
+        days = days < 10 ? days : days;
         return days;
     }
 
@@ -36,7 +48,8 @@ const GradientMatching = () => {
       </View>
       <View style={styles.individualRow}>
             <View style={styles.miniCircle}/>
-            <Text style={{color: 'white'}}>Goal: {goal} , {formatDays()} </Text>
+            <Text style={{color: 'white', fontSize: 20}}>Goal: </Text>
+            <Text style={{color: 'white', fontSize: 20, fontWeight: 'bold'}}>{formatDays()}/{goal} ({Math.floor((time*100)/(goal*24*60*60)) }%)</Text>
       </View>
       <View style={styles.individualRow}>
             <View style={styles.miniCircle}/>
@@ -53,11 +66,14 @@ const styles = StyleSheet.create({
         height: 30,
         width: 30,
         borderRadius: 20,
-        backgroundColor: 'green'
+        backgroundColor: 'green',
+        marginRight: '7%',
     },
     individualRow: {
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
+        marginVertical: '1.5%',
+
     }
 })

@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { View, Text, Button, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 // import { Image } from 'react-native-svg';
 import Bg from "../assets/BackG.jpg";
 
 import Icon from 'react-native-vector-icons/Ionicons';
-
+import { AppContext } from './Context/AppContext';
 
 const MidCircleHome = () => {
     const [time, setTime] = useState(0);
+    const {reset, setReset} = useContext(AppContext);
     const [isRunning, setIsRunning] = useState(false);
 
     useEffect(() => {
@@ -27,7 +28,7 @@ const MidCircleHome = () => {
         let interval;
         if (isRunning) {
             interval = setInterval(() => {
-                setTime(prev => prev + 10000);
+                setTime(prev => prev + 1);
                 formatTime();
             }, 1000);
         }
@@ -48,6 +49,7 @@ const MidCircleHome = () => {
         await AsyncStorage.removeItem('startTime');
         setTime(0);
         await AsyncStorage.setItem('startTime', Date.now().toString());
+        setReset(!reset);
     };
 
     function formatTime() {
@@ -66,7 +68,7 @@ const MidCircleHome = () => {
 
     function formatDays() {
         let days = Math.floor(time / (3600 * 24));
-        days = days < 10 ? `0` : days;
+        days = days < 10 ? days : days;
         return days;
     }
 
