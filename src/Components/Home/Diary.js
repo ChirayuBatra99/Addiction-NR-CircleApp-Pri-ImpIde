@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button, Image, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import Bg from '../assets/BackG.jpg';
+import Bg from '../../assets/BackG.jpg';
 
 const Diary = () => {
   const [todo, setTodo] = useState('');

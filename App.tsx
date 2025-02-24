@@ -5,7 +5,7 @@
  * @format
  */
 import MainContainer from './src/Tabs/MainContainer';
-import TimerDials from './src/Components/TimerDials';
+import TimerDials from './src/Components/Home/TimerDials';
 import { AppProvider } from './src/Components/Context/AppContext';
 
 import React from 'react';

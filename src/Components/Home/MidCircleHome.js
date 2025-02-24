@@ -2,10 +2,10 @@ import React, { useState, useEffect, useContext } from 'react';
 import { View, Text, Button, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 // import { Image } from 'react-native-svg';
-import Bg from "../assets/BackG.jpg";
+import Bg from "../../assets/BackG.jpg";
 
 import Icon from 'react-native-vector-icons/Ionicons';
-import { AppContext } from './Context/AppContext';
+import { AppContext } from '../Context/AppContext';
 
 const MidCircleHome = () => {
     const [time, setTime] = useState(0);

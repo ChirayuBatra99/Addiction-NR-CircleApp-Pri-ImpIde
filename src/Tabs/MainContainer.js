@@ -4,13 +4,13 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StyleSheet } from 'react-native';
 
-import Home from '../Components/Home';
+// import Home from '../Components/Home';
 import Goal from '../Components/Goal/Goal';
 import Settings from '../Components/Settings/Settings';
 // import SetGoalButton from '../Components/Goal/SetGoalButton';
 // import SetGoalScreen from '../Components/Goal/SetGoalScreen';
 import Navigation from '../Components/Goal/Navigation';
-import HomeNavigation from '../Components/HomeNavigation';
+import HomeNavigation from '../Components/Home/HomeNavigation';
 
 const Tab = createBottomTabNavigator();
 const homeName = "Home";

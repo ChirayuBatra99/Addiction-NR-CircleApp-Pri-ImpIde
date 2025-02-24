@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, Button, StyleSheet, Image, TouchableOpacity } from 'react-native';
-import Bg from "../assets/BackG.jpg";
+import Bg from "../../assets/BackG.jpg";
 
 import MidCircleHome from './MidCircleHome';
 import Quotes from './Quotes';
