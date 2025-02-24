@@ -2,3 +2,8 @@ Wrote:
 apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle")
 in build.gradle to show enable the package:  
         react-native-vector-icons/Ionicons
+
+
+
+Did this:   Inside android/gradle.properties, change newArchEnabled=true to newArchEnabled=false
+

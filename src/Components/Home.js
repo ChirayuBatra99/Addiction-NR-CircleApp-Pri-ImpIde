@@ -4,6 +4,7 @@ import Bg from "../assets/BackG.jpg";
 
 import MidCircleHome from './MidCircleHome';
 import Quotes from './Quotes';
+import DiaryIcon from './DiaryIcon';
 
 const Home = () => {
     return (  
@@ -11,7 +12,7 @@ const Home = () => {
             <Image source={Bg} alt="kajesdbc" style={styles.backStyles} />
             <Quotes />
             <MidCircleHome/> 
-
+            <DiaryIcon />
          </View>     
     );
 };
