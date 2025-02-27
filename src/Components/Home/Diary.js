@@ -3,60 +3,77 @@ import { View, Text, TextInput, Button, Image, FlatList, TouchableOpacity, Style
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Bg from '../../assets/BackG.jpg';
 
+import Icon from 'react-native-vector-icons/AntDesign';
+
 const Diary = () => {
-  const [todo, setTodo] = useState('');
-  const [todoList, setTodoList] = useState([]);
+  const [diary, setDiary] = useState('');
+  const [diaryList, setDiaryList] = useState([]);
 
   // Load todos from AsyncStorage when the app loads
   useEffect(() => {
-    const loadTodos = async () => {
-      const storedTodos = await AsyncStorage.getItem('todoList');
-      if (storedTodos) {
-        setTodoList(JSON.parse(storedTodos));
+    const loadDiary = async () => {
+      const storedDiary = await AsyncStorage.getItem('diaryList');
+      if (storedDiary) {
+        setDiaryList(JSON.parse(storedDiary));
       }
     };
-    loadTodos();
+    loadDiary();
   }, []);
 
   // Save todos to AsyncStorage whenever the todoList changes
   useEffect(() => {
-    const saveTodos = async () => {
-      await AsyncStorage.setItem('todoList', JSON.stringify(todoList));
+    const saveDiary = async () => {
+      await AsyncStorage.setItem('diaryList', JSON.stringify(diaryList));
     };
-    saveTodos();
-  }, [todoList]);
+    saveDiary();
+  }, [diaryList]);
 
-  const addTodo = () => {
-    if (todo.trim().length > 0) {
-      const newTodo = {
+  const addDiary = () => {
+    if (diary.trim().length > 0) {
+      const newDiary = {
         id: Date.now().toString(),
-        text: todo,
+        text: diary,
         timestamp: new Date().toLocaleString(),
       };
-      setTodoList([...todoList, newTodo]);
-      setTodo('');
+      setDiaryList([...diaryList, newDiary]);
+      setDiary('');
     }
   };
 
-  const removeTodo = (id) => {
-    setTodoList(todoList.filter((item) => item.id !== id));
+  const removeDiary = (id) => {
+    setDiaryList(diaryList.filter((item) => item.id !== id));
   };
 
   return (
     <View style={styles.container}>
-                  <Image source={Bg} alt="kajesdbc" style={styles.backStyles} />
+        <Image source={Bg} alt="kajesdbc" style={styles.backStyles} />
       
-      <Text style={styles.title}>Todo List</Text>
-      <TextInput
+      <Text style={styles.title}>My Diary</Text>
+
+      {/* <TextInput
         style={styles.input}
-        placeholder="Enter a todo"
-        value={todo}
-        onChangeText={(text) => setTodo(text)}
+        placeholder="Enter your thoughts"
+        value={diary}
+        onChangeText={(text) => setDiary(text)}
         placeholderTextColor='white'
       />
-      <Button title="Add Todo" onPress={addTodo} />
+      <Button title="Add Todo" onPress={addDiary} /> */}
+
+      <View style={{display: 'flex', flexDirection: 'row', alignItems:'center', marginBottom: 25}}>
+              <TextInput
+                style={styles.input}
+                placeholder="Enter your thoughts"
+        value={diary}
+        onChangeText={(text) => setDiary(text)}
+                placeholderTextColor='grey'
+              />
+              <Icon name="pluscircleo" size={40} color="white" onPress={addDiary} />
+              {/* <Button title="Add Todo" onPress={addTodo} /> */}
+            </View>
+
+      
       <FlatList
-        data={todoList}
+        data={diaryList}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <View style={styles.todoItem}>
@@ -64,7 +81,7 @@ const Diary = () => {
               <Text style={styles.todoText}>{item.text}</Text>
               <Text style={styles.timestamp}>{item.timestamp}</Text>
             </View>
-            <TouchableOpacity onPress={() => removeTodo(item.id)}>
+            <TouchableOpacity onPress={() => removeDiary(item.id)}>
               <Text style={styles.deleteText}>Delete</Text>
             </TouchableOpacity>
           </View>
@@ -84,7 +101,7 @@ const styles = StyleSheet.create({
     height: '100%',
     width: '100%',
     position: 'absolute',
-},
+  },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
@@ -95,8 +112,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#ccc',
     padding: 10,
-    marginBottom: 10,
+    // marginBottom: 10,
+    marginRight: '5%',
+    marginLeft: '5%',
     borderRadius: 5,
+    color: 'white',
+    width: '70%',
   },
   todoItem: {
     flexDirection: 'row',
@@ -104,7 +125,8 @@ const styles = StyleSheet.create({
     padding: 10,
     borderBottomWidth: 1,
     borderColor: '#ccc',
-    
+    width: '80%',
+    marginLeft: '10%',
   },
   todoText: {
     fontSize: 16,
@@ -118,7 +140,7 @@ const styles = StyleSheet.create({
 
   },
   deleteText: {
-    color: 'white',
+    color: '#4ab59e',
   },
 });
 

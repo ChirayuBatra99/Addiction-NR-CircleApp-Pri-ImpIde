@@ -1,13 +1,15 @@
 import { StyleSheet, Text, View, Image } from 'react-native'
 import React from 'react'
 import Bg from '../../assets/BackG.jpg';
-import TodoApp from './TodoApp';
+import Header from './Header';
+import OptionsList from './OptionsList';
 
 const Settings = () => {
   return (
       <View style={{ flex: 1, alignItems: 'center' }}>
             <Image source={Bg} alt="kajesdbc" style={styles.backStyles} />
-            <TodoApp />
+            <Header />
+            <OptionsList />
       </View>
   )
 }

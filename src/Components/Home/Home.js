@@ -5,12 +5,14 @@ import Bg from "../../assets/BackG.jpg";
 import MidCircleHome from './MidCircleHome';
 import Quotes from './Quotes';
 import DiaryIcon from './DiaryIcon';
+import Rank from './Rank';
 
 const Home = () => {
     return (  
         <View style={{ flex: 1, color: 'white'}}>
             <Image source={Bg} alt="kajesdbc" style={styles.backStyles} />
             <Quotes />
+            <Rank />
             <MidCircleHome/> 
             <DiaryIcon />
          </View>     

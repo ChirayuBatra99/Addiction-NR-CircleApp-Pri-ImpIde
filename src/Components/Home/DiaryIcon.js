@@ -10,12 +10,12 @@ const DiaryIcon = () => {
     
     return (
         <TouchableOpacity style={styles.container}>
-            <View>
+            <View style={{display: 'flex', flexDirection:'column', alignItems: 'center'}}>
                 <Iconi name="book-journal-whills" size={50} color="white" style={styles.resetIconStyles} onPress={() => navigation.navigate("diary")}/>
                 <Text style={styles.textDiary}>Diary</Text>
             </View>
-            <View>
-                <Icon name="list-circle-outline" size={50} color="white" style={styles.resetIconStyles} />
+            <View style={{display: 'flex', flexDirection:'column', alignItems: 'center'}}>
+                <Icon name="list-circle-outline" size={50} color="white" style={styles.resetIconStyles} onPress={() => navigation.navigate("todo")}/>
                 <Text style={styles.textDiary}>To-Do List</Text>
             </View>
 
@@ -29,7 +29,10 @@ const styles = StyleSheet.create({
     container: {
         display: 'flex',
         flexDirection: 'row',
-        justifyContent: 'space-around'
+        justifyContent: 'space-around',
+        paddingBottom: '25%',
+        paddingHorizontal: '20%',
+        
     },
     circle: {
         position: 'absolute',
