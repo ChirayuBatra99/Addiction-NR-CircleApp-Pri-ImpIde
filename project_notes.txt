@@ -7,3 +7,4 @@ in build.gradle to show enable the package:
 
 Did this:   Inside android/gradle.properties, change newArchEnabled=true to newArchEnabled=false
 
+"Quit addiction. Self improvement app."

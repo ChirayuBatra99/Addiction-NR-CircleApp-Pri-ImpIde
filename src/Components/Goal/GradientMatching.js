@@ -1,7 +1,8 @@
 import { StyleSheet, Text, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import { getNextMilestone } from '../Milestones/MileStone';
+import Longest from './Longest';
 const GradientMatching = () => {
     const [goal, setGoal] = useState(0);
     const [time, setTime] = useState(0);
@@ -41,19 +42,23 @@ const GradientMatching = () => {
     }
 
   return (
-    <View>
+    <View style={{marginTop: '6%'}}>
       <View style={styles.individualRow}>
-            <View style={styles.miniCircle}/>
-            <Text style={{color: 'white'}}>Next MileStone:</Text>
+            <View style={styles.miniCircleOuter}/>
+            <Text style={{color: 'white', fontSize: 20}}>Next Rank: </Text>
+            {/* <Text style={{color: 'white', fontSize: 20, fontWeight: 'bold'}}>{formatDays()}/{goal} ({Math.floor((time*100)/(goal*24*60*60)) }%)</Text> */}
+            <Text style={{color: 'white', fontSize: 20, fontWeight: 'bold'}}>{formatDays()}/{getNextMilestone(formatDays())} ({Math.floor((time*100)/(getNextMilestone(formatDays())*24*60*60)) }%)</Text>
+
       </View>
       <View style={styles.individualRow}>
-            <View style={styles.miniCircle}/>
+            <View style={styles.miniCircleMid}/>
             <Text style={{color: 'white', fontSize: 20}}>Goal: </Text>
             <Text style={{color: 'white', fontSize: 20, fontWeight: 'bold'}}>{formatDays()}/{goal} ({Math.floor((time*100)/(goal*24*60*60)) }%)</Text>
       </View>
       <View style={styles.individualRow}>
-            <View style={styles.miniCircle}/>
-            <Text style={{color: 'white'}}>XYXnaldknf</Text>
+            <View style={styles.miniCircleInner}/>
+            <Text style={{color: 'white', fontSize: 20}}>Longest: </Text>
+            <Text style={{color: 'white', fontSize: 20, fontWeight: 'bold'}}>{formatDays()}/{Longest()}  ({Math.floor((time*100)/(Longest()*24*60*60))})%</Text>
       </View>
     </View>
   )
@@ -62,12 +67,26 @@ const GradientMatching = () => {
 export default GradientMatching
 
 const styles = StyleSheet.create({
-    miniCircle: {
+    miniCircleOuter: {
         height: 30,
         width: 30,
         borderRadius: 20,
-        backgroundColor: 'green',
-        marginRight: '7%',
+        backgroundColor: '#f25546',
+        marginRight: '7%',  
+    },
+    miniCircleMid: {
+        height: 30,
+        width: 30,
+        borderRadius: 20,
+        backgroundColor: '#c9c147',
+        marginRight: '7%',  
+    },
+    miniCircleInner: {
+        height: 30,
+        width: 30,
+        borderRadius: 20,
+        backgroundColor: '#0eb8e3',
+        marginRight: '7%',  
     },
     individualRow: {
         display: 'flex',

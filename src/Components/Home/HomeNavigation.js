@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React from 'react';
 
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -8,6 +8,7 @@ const Stack = createNativeStackNavigator();
 import Home from './Home';
 import Diary from './Diary';
 import ToDoList from './ToDoList';
+import MileStonesPage from '../Milestones/MileStonesPage';
 
 const HomeNavigation = () => {
     return (
@@ -15,6 +16,7 @@ const HomeNavigation = () => {
             <Stack.Screen name="home" component={Home} options={{ headerShown: false }} />
             <Stack.Screen name="diary" component={Diary} options={{ headerShown: false }} />
             <Stack.Screen name="todo" component={ToDoList} options={{ headerShown: false}} />
+            <Stack.Screen name="milestones" component={MileStonesPage} options={{headerShown: false}} />
         </Stack.Navigator>
     )
 }

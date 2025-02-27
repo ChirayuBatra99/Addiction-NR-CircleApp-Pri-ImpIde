@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react'
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+import { getNextMilestone } from '../Milestones/MileStone';
+import Longest from './Longest';
 
 const MidCircles = () => {
     const [targetDayz, setTargetDayz] = useState(0);
@@ -56,10 +58,10 @@ const MidCircles = () => {
                 style={styles.outer}
                 size={330}
                 width={30}
-                fill={90}
+                fill={Math.floor((time*100)/(getNextMilestone(formatDays())*24*60*60)) }
                 rotation={0}
                 lineCap='round'
-                tintColor="#98ab82"
+                tintColor="#f25546"
                 onAnimationComplete={() => console.log('onAnimationComplete')}
                 backgroundColor="#3d5875" />
             <AnimatedCircularProgress
@@ -69,17 +71,17 @@ const MidCircles = () => {
                 fill={Math.floor((time*100)/(goal*24*60*60)) }
                 rotation={0}
                 lineCap='round'
-                tintColor="#bf4747"
+                tintColor="#c9c147"
                 onAnimationComplete={() => console.log('onAnimationComplete')}
                 backgroundColor="#3d5875" />
             <AnimatedCircularProgress
                 style={styles.inner}
                 size={190}
                 width={30}
-                fill={90}
+                fill={Math.floor((time*100)/Longest()*24*60*60)}
                 lineCap='round'
                 rotation={0}
-                tintColor="#6cb522"
+                tintColor="#0eb8e3"
                 onAnimationComplete={() => console.log('onAnimationComplete')}
                 backgroundColor="#3d5875" />
             {/* <Text style={{color: 'white'}}>{targetDayz}</Text> */}

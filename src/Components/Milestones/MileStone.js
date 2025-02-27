@@ -35,4 +35,11 @@ const getMilestone = (day) => {
   return milestone ? milestone.title : "Blank Kid";
 };
 
-export { milestones, getMilestone };
+const getNextMilestone = (day) => {
+  const milestone = milestones
+    .filter(m => m.day > day).at(0);
+    
+    return milestone ? milestone.day : 1000;
+}
+
+export { milestones, getMilestone, getNextMilestone };

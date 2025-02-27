@@ -46,6 +46,7 @@ const MidCircleHome = () => {
     // };
 
     const resetTimer = async () => {
+        await AsyncStorage.setItem('longeststreak', formatDays());
         await AsyncStorage.removeItem('startTime');
         setTime(0);
         await AsyncStorage.setItem('startTime', Date.now().toString());
@@ -147,6 +148,7 @@ const styles = StyleSheet.create({
     },
     mainContainer: {
         flex: 1,
+        marginTop: '-25%'
         // position: 'absolute'
     },
     container: {
