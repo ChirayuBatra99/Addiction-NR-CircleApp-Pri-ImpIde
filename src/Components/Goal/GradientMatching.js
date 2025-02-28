@@ -4,7 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getNextMilestone } from '../Milestones/MileStone';
 import Longest from './Longest';
 const GradientMatching = () => {
-    const [goal, setGoal] = useState(0);
+    const [goal, setGoal] = useState(1);
     const [time, setTime] = useState(0);
     const [isRunning, setIsRunning] = useState(false);
 
@@ -58,7 +58,10 @@ const GradientMatching = () => {
       <View style={styles.individualRow}>
             <View style={styles.miniCircleInner}/>
             <Text style={{color: 'white', fontSize: 20}}>Longest: </Text>
-            <Text style={{color: 'white', fontSize: 20, fontWeight: 'bold'}}>{formatDays()}/{Longest()}  ({Math.floor((time*100)/(Longest()*24*60*60))})%</Text>
+            { Longest() ?
+            (<Text style={{color: 'white', fontSize: 20, fontWeight: 'bold'}}>{formatDays()}/{Longest()}  ({Math.floor((time*100)/(Longest()*24*60*60))})%</Text>)
+            : (<Text style={{color: 'white', fontSize: 20, fontWeight: 'bold'}}>0 days</Text>)
+}
       </View>
     </View>
   )

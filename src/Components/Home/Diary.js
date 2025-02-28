@@ -47,17 +47,10 @@ const Diary = () => {
   return (
     <View style={styles.container}>
         <Image source={Bg} alt="kajesdbc" style={styles.backStyles} />
-      
-      <Text style={styles.title}>My Diary</Text>
+      <View style={styles.pad}>
+        <Text style={styles.title}>My Diary</Text>
+      </View>      
 
-      {/* <TextInput
-        style={styles.input}
-        placeholder="Enter your thoughts"
-        value={diary}
-        onChangeText={(text) => setDiary(text)}
-        placeholderTextColor='white'
-      />
-      <Button title="Add Todo" onPress={addDiary} /> */}
 
       <View style={{display: 'flex', flexDirection: 'row', alignItems:'center', marginBottom: 25}}>
               <TextInput
@@ -92,6 +85,15 @@ const Diary = () => {
 };
 
 const styles = StyleSheet.create({
+  pad: {
+    borderRadius: 25,
+    width: '70%',
+    marginLeft: '15%',
+    borderColor: 'black',
+    borderWidth: 1,
+    alignItems: 'center',
+    marginBottom: 8,
+  }, 
   container: {
     flex: 1,
     // padding: 20,
@@ -105,8 +107,9 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 20,
-    color: 'white',
+    marginBottom: 10,
+    marginTop: 10,
+    color: 'silver',
   },
   input: {
     borderWidth: 1,

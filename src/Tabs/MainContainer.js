@@ -11,6 +11,7 @@ import Settings from '../Components/Settings/Settings';
 // import SetGoalScreen from '../Components/Goal/SetGoalScreen';
 import Navigation from '../Components/Goal/Navigation';
 import HomeNavigation from '../Components/Home/HomeNavigation';
+import SettingsNavigation from '../Components/Settings/SettingsNavigation';
 
 const Tab = createBottomTabNavigator();
 const homeName = "Home";
@@ -60,7 +61,7 @@ function MainContainer() {
                 />
                 <Tab.Screen
                     name={settingsName}
-                    component={Settings}
+                    component={SettingsNavigation}
                     options={{ headerShown: false }}
                 />
             </Tab.Navigator>

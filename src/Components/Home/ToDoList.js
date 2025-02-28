@@ -48,8 +48,9 @@ const ToDoList = () => {
     <View style={styles.container}>
       <Image source={Bg} alt="kajesdbc" style={styles.backStyles} />
 
-
+ <View style={styles.pad}>
       <Text style={styles.title}>Todo List</Text>
+      </View>      
 
       <View style={{display: 'flex', flexDirection: 'row', alignItems:'center', marginBottom: 25}}>
         <TextInput
@@ -84,6 +85,15 @@ const ToDoList = () => {
 };
 
 const styles = StyleSheet.create({
+  pad: {
+    borderRadius: 25,
+    width: '70%',
+    marginLeft: '15%',
+    borderColor: 'black',
+    borderWidth: 1,
+    alignItems: 'center',
+    marginBottom: 8,
+  }, 
   container: {
     flex: 1,
     // padding: 20,
@@ -97,8 +107,9 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 20,
-    color: 'white',
+    marginBottom: 10,
+    marginTop: 10,
+    color: 'silver',
   },
   input: {
     borderWidth: 1,

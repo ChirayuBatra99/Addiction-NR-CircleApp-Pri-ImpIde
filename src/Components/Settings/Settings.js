@@ -3,6 +3,7 @@ import React from 'react'
 import Bg from '../../assets/BackG.jpg';
 import Header from './Header';
 import OptionsList from './OptionsList';
+import Bmac from './Bmac';
 
 const Settings = () => {
   return (
@@ -10,6 +11,7 @@ const Settings = () => {
             <Image source={Bg} alt="kajesdbc" style={styles.backStyles} />
             <Header />
             <OptionsList />
+            <Bmac />
       </View>
   )
 }

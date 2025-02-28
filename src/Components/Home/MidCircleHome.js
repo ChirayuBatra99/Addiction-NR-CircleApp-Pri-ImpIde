@@ -46,7 +46,7 @@ const MidCircleHome = () => {
     // };
 
     const resetTimer = async () => {
-        await AsyncStorage.setItem('longeststreak', formatDays());
+        await AsyncStorage.setItem('longeststreak', formatDays()?formatDays().toString(): '0');
         await AsyncStorage.removeItem('startTime');
         setTime(0);
         await AsyncStorage.setItem('startTime', Date.now().toString());

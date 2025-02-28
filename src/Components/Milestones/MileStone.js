@@ -1,7 +1,7 @@
 const milestones = [
-  { day: 1, title: "Fresh Start" },
-  { day: 4, title: "Good Kid" },
-  { day: 8, title: "Cool Kid" },
+  { day: 1, title: "Capable Kiddo" },
+  { day: 4, title: "Good Kiddo" },
+  { day: 8, title: "Cool Kiddo" },
   { day: 15, title: "Firm Believer" },
   { day: 21, title: "Strong-Willed" },
   { day: 30, title: "Warrior" },
@@ -32,7 +32,7 @@ const getMilestone = (day) => {
     .filter(m => m.day <= day)
     .at(-1); 
 
-  return milestone ? milestone.title : "Blank Kid";
+  return milestone ? milestone.title : "Newbie";
 };
 
 const getNextMilestone = (day) => {

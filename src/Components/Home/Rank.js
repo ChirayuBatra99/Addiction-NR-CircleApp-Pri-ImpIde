@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     },
     plate: {
         height: '30%',
-        width: '40%',
+        width: '80%',
         backgroundColor: '#7a181c',
         display: 'flex',
         flexDirection: 'column',
