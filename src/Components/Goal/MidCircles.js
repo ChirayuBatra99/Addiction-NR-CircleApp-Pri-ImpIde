@@ -60,7 +60,7 @@ const MidCircles = () => {
                 style={styles.outer}
                 size={330}
                 width={30}
-                fill={Math.floor((time*100)/(getNextMilestone(formatDays())*24*60*60)) }
+                fill={Math.floor((time*100)/(getNextMilestone(formatDays())*24*60*60)) == 0 ? 0.3 : Math.floor((time*100)/(getNextMilestone(formatDays())*24*60*60)) }
                 rotation={0}
                 lineCap='round'
                 tintColor="#f25546"
@@ -70,7 +70,7 @@ const MidCircles = () => {
                 style={styles.mid}
                 size={260}
                 width={30}
-                fill={Math.floor((time*100)/(goal*24*60*60)) }
+                fill={Math.floor((time*100)/(goal*24*60*60)) ==0 ? 0.3 : Math.floor((time*100)/(goal*24*60*60))}
                 rotation={0}
                 lineCap='round'
                 tintColor="#c9c147"
