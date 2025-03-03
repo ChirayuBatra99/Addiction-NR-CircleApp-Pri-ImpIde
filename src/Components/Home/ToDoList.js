@@ -70,7 +70,7 @@ const ToDoList = () => {
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <View style={styles.todoItem}>
-            <View>
+            <View style={{width: '85%'}}>
               <Text style={styles.todoText}>{item.text}</Text>
               {/* <Text style={styles.timestamp}>{item.timestamp}</Text> */}
             </View>

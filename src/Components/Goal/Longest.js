@@ -12,16 +12,17 @@ const Longest = () => {
     useEffect(() => {
         const checkLongest = async () => {
             const isLongestThere = await AsyncStorage.getItem('longeststreak');
-            if (!isLongestThere) {  // Check if it's not set
-                setLongestDays(0);
-                await AsyncStorage.setItem('longeststreak', '0');
-            } else {
+            if (isLongestThere !== null) {
                 setLongestDays(parseInt(isLongestThere));
+            } else {
+                await AsyncStorage.setItem('longeststreak', '0');
+                setLongestDays(0);
             }
-        }
+        };
         checkLongest();
-    }, []);
+    }, [reset]);
 
+    
   return longestDays;
 }
 

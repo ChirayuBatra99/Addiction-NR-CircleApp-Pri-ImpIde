@@ -6,6 +6,8 @@ import Bg from "../../assets/BackG.jpg";
 
 import Icon from 'react-native-vector-icons/Ionicons';
 import { AppContext } from '../Context/AppContext';
+import CircularText from './CircularText';
+
 
 const MidCircleHome = () => {
     const [time, setTime] = useState(0);
@@ -35,22 +37,17 @@ const MidCircleHome = () => {
         return () => clearInterval(interval);
     }, [isRunning]);
 
-    // const startTimer = async () => {
-    //     await AsyncStorage.setItem('startTime', Date.now().toString());
-    //     setIsRunning(true);
-    // };
-
-    // const stopTimer = async () => {
-    //     await AsyncStorage.removeItem('startTime');
-    //     setIsRunning(false);
-    // };
-
     const resetTimer = async () => {
-        await AsyncStorage.setItem('longeststreak', formatDays()?formatDays().toString(): '0');
+        const longest = await AsyncStorage.getItem('longeststreak');
+        if(parseInt(longest)> formatDays())
+        {
+            await AsyncStorage.setItem('longeststreak', formatDays()?formatDays().toString(): '0');
+        }
         await AsyncStorage.removeItem('startTime');
         setTime(0);
         await AsyncStorage.setItem('startTime', Date.now().toString());
         setReset(!reset);
+        console.log(AsyncStorage.getItem('longeststreak'));
     };
 
     function formatTime() {
@@ -93,11 +90,7 @@ const MidCircleHome = () => {
 
     return (
         <View style={styles.mainContainer}>
-            {/* <Image source={Bg} alt="kajesdbc" style={styles.backStyles} /> */}
             <View style={styles.container}>
-                {/* <Text style={styles.timerText}>{formatTime()}</Text> */}
-                {/* <Button title="Reset" onPress={resetTimer} /> */}
-
                 <View style={styles.circle}>
                     <View style={styles.circleTwo} />
                     <Text style={styles.itHasBeen}>It has been</Text>
@@ -116,6 +109,8 @@ const MidCircleHome = () => {
                             <Text style={styles.hsmTexts}>Seconds</Text>
                         </View>
                     </View>
+                    <CircularText text="OFF ADDICTION" radius={150} />
+                    {/* <Text style={styles.offAddiction}>OFF Addiction</Text> */}
                 <TouchableOpacity onPress={resetTimer}>
                     <Icon name="reload-outline" size={40} color="white" style={styles.resetIconStyles}/>
                 </TouchableOpacity>
@@ -132,6 +127,12 @@ const MidCircleHome = () => {
 };
 
 const styles = StyleSheet.create({
+    offAddiction: {
+        color: 'white',
+        position: 'absolute',
+        bottom: '6%',
+
+    },
     resetIconStyles:{
         backgroundColor:'red', 
         borderRadius: 50, 
@@ -231,61 +232,3 @@ const styles = StyleSheet.create({
 });
 
 export default MidCircleHome;
-
-
-
-
-
-// const Home = () => {
-//     const [startDate, setStartDate] = useState("");
-
-//     const onReset = async () => {
-//         try {
-//             const using24HourFormat = await DeviceTimeFormat.is24HourFormat();
-//             const val = moment(new Date()).format(using24HourFormat ? 'HH:mm' : 'h:mm A');
-
-//             setStartDate(val);
-//             await AsyncStorage.setItem('startTime', val);  // Save the updated value
-
-//             Alert.alert("Start time saved:", val);
-//         } catch (e) {
-//             console.error("Error saving start time:", e);
-//         }
-//     };
-
-//     return (
-//         <View>
-//             <CountDown
-//                 until={100}
-//                 onFinish={() => alert('finished')}
-//                 onPress={() => alert('hello')}
-//                 size={20}
-//             />
-//             <AnimatedCircularProgress
-//                 size={220}
-//                 width={20}
-//                 fill={90}
-//                 rotation={0}
-//                 tintColor="#00e0ff"
-//                 onAnimationComplete={() => console.log('onAnimationComplete')}
-//                 backgroundColor="#3d5875"
-//             />
-//             <Button
-//                 onPress={onReset}
-//                 title="Reset"
-//                 color="#841584"
-//             />
-//         </View>
-//     );
-// };
-
-// export default Home;
-
-// const styles = StyleSheet.create({
-//     input: {
-//         height: 40,
-//         margin: 12,
-//         borderWidth: 1,
-//         padding: 10,
-//     },
-// });

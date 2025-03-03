@@ -6,67 +6,68 @@ import { useNavigation } from '@react-navigation/native';
 
 const quotes = {
   "quotes": [
-    {
-      "quote": "Believe you can overcome it, and you're halfway there."
-    },
-    {
-      "quote": "Your life gets better when you choose to change."
-    },
-    {
-      "quote": "The only limit to a better tomorrow is the doubt you feel today."
-    },
-    {
-      "quote": "Don’t wait for the urge to pass; keep moving forward."
-    },
-    {
-      "quote": "The first step to quitting is deciding to start."
-    },
-    {
-      "quote": "You don’t have to be perfect to begin, but you have to begin to get better."
-    },
-    {
-      "quote": "Happiness is found in freedom, not in addiction."
-    },
-    {
-      "quote": "Your time is valuable; don’t waste it chained to a habit."
-    },
-    {
-      "quote": "The best way to predict a smoke-free future is to create it."
-    },
-    {
-      "quote": "It’s never too late to break free and breathe easier."
-    },
-    {
-      "quote": "Start where you are, even if it’s one less cigarette today."
-    },
-    {
-      "quote": "Believe in your strength to overcome cravings."
-    },
-    {
-      "quote": "Don’t wait for the perfect moment to quit; make today the day."
-    },
-    {
-      "quote": "Every effort you make to quit makes a difference."
-    },
-    {
-      "quote": "Success comes to those who are too focused on living healthy."
-    },
-    {
-      "quote": "Don’t let fear of withdrawal hold you back."
-    },
-    {
-      "quote": "Discipline is the bridge to a smoke-free life."
-    },
-    {
-      "quote": "Small daily victories lead to complete freedom."
-    },
-    {
-      "quote": "Quitting is the sum of small efforts, repeated every day."
-    },
-    {
-      "quote": "Freedom from smoking starts with the decision to quit."
-    }
-  ]
+  {
+    "quote": "Small steps every day lead to big changes."
+  },
+  {
+    "quote": "Your future is built on the habits you choose today."
+  },
+  {
+    "quote": "Growth begins with a single step—start now."
+  },
+  {
+    "quote": "Progress is progress, no matter how small."
+  },
+  {
+    "quote": "Write your goals down—what gets written gets done."
+  },
+  {
+    "quote": "The hardest part of change is starting. Keep going."
+  },
+  {
+    "quote": "Each day is a new page in your story—make it count."
+  },
+  {
+    "quote": "Your to-do list is a roadmap to a better version of you."
+  },
+  {
+    "quote": "Discipline creates freedom—stay consistent."
+  },
+  {
+    "quote": "Journaling clears the mind and fuels the soul."
+  },
+  {
+    "quote": "Your progress is worth documenting—keep a journal."
+  },
+  {
+    "quote": "You don’t need motivation; you need a plan."
+  },
+  {
+    "quote": "One less bad habit today, one step closer to freedom."
+  },
+  {
+    "quote": "Addictions don’t define you—your actions do."
+  },
+  {
+    "quote": "A better life starts with better choices."
+  },
+  {
+    "quote": "You are stronger than your cravings."
+  },
+  {
+    "quote": "Small wins lead to lasting change."
+  },
+  {
+    "quote": "Success is built daily—write, plan, and take action."
+  },
+  {
+    "quote": "Break free, step forward, and own your journey."
+  },
+  {
+    "quote": "Your habits shape your future—choose them wisely."
+  }
+]
+
 }
 
 const Quotes = () => {

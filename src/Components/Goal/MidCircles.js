@@ -1,14 +1,16 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { AppContext } from '../Context/AppContext';
 
 import { getNextMilestone } from '../Milestones/MileStone';
 import Longest from './Longest';
 
 const MidCircles = () => {
     const [targetDayz, setTargetDayz] = useState(0);
+    const {reset, setReset} = useContext(AppContext);
 
     const [goal, setGoal] = useState(0);
     const [time, setTime] = useState(0);
@@ -29,7 +31,7 @@ const MidCircles = () => {
             }
         };
         loadStartTime();
-    },[]);
+    },[reset]);
     
       useEffect(() => {
                let interval;
@@ -78,7 +80,7 @@ const MidCircles = () => {
                 style={styles.inner}
                 size={190}
                 width={30}
-                fill={Math.floor((time*100)/Longest()*24*60*60)}
+                fill={Math.floor((time*100)/(Longest()*24*60*60))}
                 lineCap='round'
                 rotation={0}
                 tintColor="#0eb8e3"

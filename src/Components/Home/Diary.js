@@ -9,7 +9,6 @@ const Diary = () => {
   const [diary, setDiary] = useState('');
   const [diaryList, setDiaryList] = useState([]);
 
-  // Load todos from AsyncStorage when the app loads
   useEffect(() => {
     const loadDiary = async () => {
       const storedDiary = await AsyncStorage.getItem('diaryList');
@@ -20,7 +19,6 @@ const Diary = () => {
     loadDiary();
   }, []);
 
-  // Save todos to AsyncStorage whenever the todoList changes
   useEffect(() => {
     const saveDiary = async () => {
       await AsyncStorage.setItem('diaryList', JSON.stringify(diaryList));
@@ -51,7 +49,6 @@ const Diary = () => {
         <Text style={styles.title}>My Diary</Text>
       </View>      
 
-
       <View style={{display: 'flex', flexDirection: 'row', alignItems:'center', marginBottom: 25}}>
               <TextInput
                 style={styles.input}
@@ -63,14 +60,13 @@ const Diary = () => {
               <Icon name="pluscircleo" size={40} color="white" onPress={addDiary} />
               {/* <Button title="Add Todo" onPress={addTodo} /> */}
             </View>
-
-      
+ 
       <FlatList
         data={diaryList}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <View style={styles.todoItem}>
-            <View>
+            <View style={{width: '85%'}}>
               <Text style={styles.todoText}>{item.text}</Text>
               <Text style={styles.timestamp}>{item.timestamp}</Text>
             </View>
@@ -96,8 +92,6 @@ const styles = StyleSheet.create({
   }, 
   container: {
     flex: 1,
-    // padding: 20,
-    // backgroundColor: 'yellow',
   },
   backStyles: {
     height: '100%',
@@ -115,7 +109,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#ccc',
     padding: 10,
-    // marginBottom: 10,
     marginRight: '5%',
     marginLeft: '5%',
     borderRadius: 5,
@@ -134,13 +127,11 @@ const styles = StyleSheet.create({
   todoText: {
     fontSize: 16,
     color: 'white',
-
   },
   timestamp: {
     color: '#888',
     fontSize: 12,
     color: 'white',
-
   },
   deleteText: {
     color: '#4ab59e',
