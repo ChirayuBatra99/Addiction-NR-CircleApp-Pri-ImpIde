@@ -5,7 +5,10 @@ const Header = () => {
   return (
     <View style={styles.container}>
       <View style={styles.pad}>
-        <Text style={styles.appName}>Self Improvement & Quit your Addiction </Text>
+        <Text style={styles.appName}>Better Self </Text>
+        <Text style={styles.desc}>Keep track of your addictions like Social Media, Vape, Smoking, etc. Write your journal, and follow your to-do list.
+          Become better everyday.
+        </Text>
       </View>
     </View>
   );
@@ -14,6 +17,10 @@ const Header = () => {
 export default Header;
 
 const styles = StyleSheet.create({
+  desc: {
+    color: 'pink',
+    fontSize: 18,
+  },
   pad: {
     backgroundColor: 'brown',
     padding: '5%',
@@ -23,7 +30,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },  
   container: {
-    height: '20%',
+    height: '35%',
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: 20,

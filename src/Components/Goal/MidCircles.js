@@ -42,6 +42,7 @@ const MidCircles = () => {
                }
                return () => clearInterval(interval);
            }, [isRunning]);
+        
 
     function formatDays() {
         let days = Math.floor(time / (3600 * 24));

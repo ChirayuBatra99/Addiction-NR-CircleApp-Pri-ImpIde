@@ -48,6 +48,22 @@ const MidCircleHome = () => {
         console.log(AsyncStorage.getItem('longeststreak'));
     };
 
+    useEffect(() => {
+        const checkAndUpdateStreak = async () => {
+            setTimeout(async () => {
+                const longest = await AsyncStorage.getItem('longeststreak');
+                const currentDays = formatDays();
+                
+                if (!longest || parseInt(longest) < currentDays) {
+                    await AsyncStorage.setItem('longeststreak', currentDays.toString());
+                }
+            }, 86400000); // 24 hours delay
+        };
+    
+        checkAndUpdateStreak();
+    }, [reset]);
+    
+
     function formatTime() {
         let days = Math.floor(time / (3600 * 24));
         let hours = Math.floor(time / 3600) % 24;
