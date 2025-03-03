@@ -49,7 +49,6 @@ const GradientMatching = () => {
             <View style={styles.individualRow}>
                 <View style={styles.miniCircleOuter} />
                 <Text style={{ color: 'white', fontSize: 20 }}>Next Rank: </Text>
-                {/* <Text style={{color: 'white', fontSize: 20, fontWeight: 'bold'}}>{formatDays()}/{goal} ({Math.floor((time*100)/(goal*24*60*60)) }%)</Text> */}
                 <Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold' }}>{formatDays()}/{getNextMilestone(formatDays())} ({Math.floor((time * 100) / (getNextMilestone(formatDays()) * 24 * 60 * 60))}%)</Text>
 
             </View>
@@ -61,10 +60,6 @@ const GradientMatching = () => {
             <View style={styles.individualRow}>
                 <View style={styles.miniCircleInner} />
                 <Text style={{ color: 'white', fontSize: 20 }}>Longest: </Text>
-                {/* { Longest() ?
-            (<Text style={{color: 'white', fontSize: 20, fontWeight: 'bold'}}>{formatDays()}/{Longest()}  ({Math.floor((time*100)/(Longest()*24*60*60))})%</Text>)
-            : (<Text style={{color: 'white', fontSize: 20, fontWeight: 'bold'}}>0 days</Text>)
-} */}
                 {Longest() ?
                     (<Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold' }}>{formatDays()}/{Longest()}  ({Math.floor((time * 100) / (Longest() * 24 * 60 * 60))})%</Text>)
                     : (<Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold' }}>0 days</Text>)
@@ -103,6 +98,5 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginVertical: '1.5%',
-
     }
 })

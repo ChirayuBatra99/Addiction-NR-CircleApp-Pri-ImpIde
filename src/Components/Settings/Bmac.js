@@ -18,7 +18,6 @@ const Bmac = () => {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    // marginTop: 20,
     marginBottom: 60,
   },
   button: {

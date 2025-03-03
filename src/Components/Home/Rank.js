@@ -81,8 +81,3 @@ const styles = StyleSheet.create({
 })
 
 export default Rank;
-
-
-
-
-// days = days < 10 ? days : days;

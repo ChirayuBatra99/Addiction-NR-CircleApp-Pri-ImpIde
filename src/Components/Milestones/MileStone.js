@@ -27,7 +27,6 @@ const milestones = [
 ];
 
 const getMilestone = (day) => {
-  // Find the last milestone before or equal to the given day
   const milestone = milestones
     .filter(m => m.day <= day)
     .at(-1); 

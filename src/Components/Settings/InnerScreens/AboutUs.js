@@ -13,11 +13,6 @@ const AboutUs = () => {
                 -Hello I'm Chirayu Batra :) {"\n"}
                 a software developer, here to apply my knowledge on making applciations that can be helpful to people.
                 {"\n"}{"\n"}
-        
-                {/* -Your little help can support me to make such applications that can be used by millions of people, adding value to everybody's life
-                around me.
-                {"\n"}{"\n"} */}
-
             </Text>
             <Bmac />
       </View>

@@ -75,17 +75,14 @@ const TimePlate = () => {
          <Text style={styles.digitText}>{formatDays()} :</Text>
          <Text style={styles.underText}>Days</Text>
       </View>
-      {/* <Text>:</Text> */}
       <View style={styles.onefour}>
          <Text style={styles.digitText}>{formatHours()} :</Text>
          <Text style={styles.underText}>Hours</Text>
       </View>
-      {/* <Text>:</Text> */}
       <View style={styles.onefour}>
          <Text style={styles.digitText}>{formatMinutes()} :</Text>
          <Text style={styles.underText}>minutes</Text>
       </View>
-      {/* <Text>:</Text> */}
       <View style={styles.onefour}>
          <Text style={styles.digitText}>{formatSeconds()} </Text>
          <Text style={styles.underText}>Seconds</Text>

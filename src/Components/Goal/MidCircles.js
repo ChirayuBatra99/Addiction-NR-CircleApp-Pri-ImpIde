@@ -86,7 +86,6 @@ const MidCircles = () => {
                 tintColor="#0eb8e3"
                 onAnimationComplete={() => console.log('onAnimationComplete')}
                 backgroundColor="#3d5875" />
-            {/* <Text style={{color: 'white'}}>{targetDayz}</Text> */}
         </View>
     )
 }

@@ -21,7 +21,6 @@ export default SetGoalButton
 
 const styles = StyleSheet.create({
     button: {
-        // marginTop: '10%',
         backgroundColor: 'orange',
         borderRadius: 25,
         paddingVertical: 10,
@@ -40,7 +39,6 @@ const styles = StyleSheet.create({
         width: '10%',
     },
     container: {
-        // : 'white',
         width: '80%',
         borderColor: 'orange',
         borderRadius: 52,

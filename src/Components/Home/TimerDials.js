@@ -29,16 +29,6 @@ const TimerDials = () => {
         return () => clearInterval(interval);
     }, [isRunning]);
 
-    // const startTimer = async () => {
-    //     await AsyncStorage.setItem('startTime', Date.now().toString());
-    //     setIsRunning(true);
-    // };
-
-    // const stopTimer = async () => {
-    //     await AsyncStorage.removeItem('startTime');
-    //     setIsRunning(false);
-    // };
-
     const resetTimer = async () => {
         await AsyncStorage.removeItem('startTime');
         setTime(0);
@@ -51,7 +41,6 @@ function formatTime() {
     let minutes = Math.floor((time % 3600) / 60);
     let seconds = time % 60;
     
-    // Format to always show two digits
     hours = hours < 10 ? `0${hours}` : hours;
     minutes = minutes < 10 ? `0${minutes}` : minutes;
     seconds = seconds < 10 ? `0${seconds}` : seconds;
@@ -64,11 +53,6 @@ function formatTime() {
   return (
     <View style={styles.container}>
       <Text style={styles.timerText}>{formatTime() }</Text>
-      {/* {!isRunning ? (
-        <Button title="Start" onPress={startTimer} />
-      ) : (
-        <Button title="Stop" onPress={stopTimer} />
-      )} */}
       <Button title="Reset" onPress={resetTimer} />
     </View>
   );
@@ -77,7 +61,6 @@ function formatTime() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: 'center',
     alignItems: 'center',
   },
   timerText: {

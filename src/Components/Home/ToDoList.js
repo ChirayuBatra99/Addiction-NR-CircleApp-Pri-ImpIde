@@ -9,7 +9,6 @@ const ToDoList = () => {
   const [todo, setTodo] = useState('');
   const [todoList, setTodoList] = useState([]);
 
-  // Load todos from AsyncStorage when the app loads
   useEffect(() => {
     const loadTodos = async () => {
       const storedTodos = await AsyncStorage.getItem('todoList');
@@ -20,7 +19,6 @@ const ToDoList = () => {
     loadTodos();
   }, []);
 
-  // Save todos to AsyncStorage whenever the todoList changes
   useEffect(() => {
     const saveTodos = async () => {
       await AsyncStorage.setItem('todoList', JSON.stringify(todoList));
@@ -61,9 +59,7 @@ const ToDoList = () => {
           placeholderTextColor='grey'
         />
         <Icon name="pluscircleo" size={40} color="white" onPress={addTodo} />
-        {/* <Button title="Add Todo" onPress={addTodo} /> */}
       </View>
-
 
       <FlatList
         data={todoList}
@@ -72,7 +68,6 @@ const ToDoList = () => {
           <View style={styles.todoItem}>
             <View style={{width: '85%'}}>
               <Text style={styles.todoText}>{item.text}</Text>
-              {/* <Text style={styles.timestamp}>{item.timestamp}</Text> */}
             </View>
             <TouchableOpacity onPress={() => removeTodo(item.id)}>
               <Text style={styles.deleteText}>Delete</Text>
@@ -96,8 +91,6 @@ const styles = StyleSheet.create({
   }, 
   container: {
     flex: 1,
-    // padding: 20,
-    // backgroundColor: 'yellow',
   },
   backStyles: {
     height: '100%',
@@ -115,7 +108,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#ccc',
     padding: 10,
-    // marginBottom: 10,
     marginRight: '5%',
     marginLeft: '5%',
     borderRadius: 5,

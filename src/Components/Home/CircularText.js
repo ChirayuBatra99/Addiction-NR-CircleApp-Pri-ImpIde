@@ -3,12 +3,12 @@ import React from 'react'
 
 const CircularText = ({ text, radius }) => {
     const characters = text.split("");
-    const angleIncrement = 57 / characters.length; // Adjust spread along the circle
+    const angleIncrement = 57 / characters.length; 
 
     return (
         <View style={styles.curvedTextContainer}>
             {characters.map((char, index) => {
-                const angle = 25 - index * angleIncrement; // Start from top center
+                const angle = 25 - index * angleIncrement; 
                 return (
                     <Text
                         key={index}
@@ -17,8 +17,7 @@ const CircularText = ({ text, radius }) => {
                             {
                                 transform: [
                                     { rotate: `${angle}deg` },
-                                    { translateY: radius-15 }, // Move outward
-                                    // { rotate: `${-angle}deg` }, // Revert text orientation
+                                    { translateY: radius-15 }, 
                                 ],
                             },
                         ]}

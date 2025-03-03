@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { View, Text, Button, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-// import { Image } from 'react-native-svg';
 import Bg from "../../assets/BackG.jpg";
 
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -11,7 +10,7 @@ import CircularText from './CircularText';
 
 const MidCircleHome = () => {
     const [time, setTime] = useState(0);
-    const {reset, setReset} = useContext(AppContext);
+    const { reset, setReset } = useContext(AppContext);
     const [isRunning, setIsRunning] = useState(false);
 
     useEffect(() => {
@@ -39,9 +38,8 @@ const MidCircleHome = () => {
 
     const resetTimer = async () => {
         const longest = await AsyncStorage.getItem('longeststreak');
-        if(parseInt(longest)> formatDays())
-        {
-            await AsyncStorage.setItem('longeststreak', formatDays()?formatDays().toString(): '0');
+        if (parseInt(longest) > formatDays()) {
+            await AsyncStorage.setItem('longeststreak', formatDays() ? formatDays().toString() : '0');
         }
         await AsyncStorage.removeItem('startTime');
         setTime(0);
@@ -111,16 +109,10 @@ const MidCircleHome = () => {
                     </View>
                     <CircularText text="OFF ADDICTION" radius={150} />
                     {/* <Text style={styles.offAddiction}>OFF Addiction</Text> */}
-                <TouchableOpacity onPress={resetTimer}>
-                    <Icon name="reload-outline" size={40} color="white" style={styles.resetIconStyles}/>
-                </TouchableOpacity>
-                
-
-
+                    <TouchableOpacity onPress={resetTimer}>
+                        <Icon name="reload-outline" size={40} color="white" style={styles.resetIconStyles} />
+                    </TouchableOpacity>
                 </View>
-
-                {/* <Icon name="reload-sharp" size={30} color="#4F8EF7" /> */}
-
             </View>
         </View>
     );
@@ -133,12 +125,12 @@ const styles = StyleSheet.create({
         bottom: '6%',
 
     },
-    resetIconStyles:{
-        backgroundColor:'red', 
-        borderRadius: 50, 
-        overflow: 'hidden', 
-        padding: 5, 
-        position:'relative',
+    resetIconStyles: {
+        backgroundColor: 'red',
+        borderRadius: 50,
+        overflow: 'hidden',
+        padding: 5,
+        position: 'relative',
         left: '38%',
         bottom: '8%',
     },

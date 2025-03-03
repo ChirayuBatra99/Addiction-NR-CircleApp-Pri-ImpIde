@@ -58,7 +58,6 @@ const Diary = () => {
                 placeholderTextColor='grey'
               />
               <Icon name="pluscircleo" size={40} color="white" onPress={addDiary} />
-              {/* <Button title="Add Todo" onPress={addTodo} /> */}
             </View>
  
       <FlatList

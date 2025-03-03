@@ -32,7 +32,6 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         paddingBottom: '25%',
         paddingHorizontal: '20%',
-        
     },
     circle: {
         position: 'absolute',

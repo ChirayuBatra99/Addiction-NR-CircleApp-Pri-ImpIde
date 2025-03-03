@@ -7,7 +7,6 @@ const SetGoalButton = () => {
     const navigation = useNavigation();
 
     return (
-
         <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("setgoal")}>
             <Text style={styles.buttonText}>Set Goal</Text>
         </TouchableOpacity>
@@ -36,7 +35,6 @@ const styles = StyleSheet.create({
         width: '10%',
     },
     container: {
-        // : 'white',
         width: '80%',
         borderColor: 'orange',
         borderRadius: 52,
