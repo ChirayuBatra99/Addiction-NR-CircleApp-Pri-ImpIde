@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         paddingBottom: '25%',
+        paddingTop: '80%',
         paddingHorizontal: '20%',
     },
     circle: {

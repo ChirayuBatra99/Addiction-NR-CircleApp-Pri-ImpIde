@@ -5,7 +5,7 @@ import { useSafeAreaFrame } from 'react-native-safe-area-context';
 import SetGoalButton from './SetGoalButton';
 
 const SetGoalScreen = () => {
-    const [targetDays, setTargetDays] = useState(0);
+    const [targetDays, setTargetDays] = useState(7);
   return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'space-between' }}>
             <Image source={Bg} alt="kajesdbc" style={styles.backStyles} />

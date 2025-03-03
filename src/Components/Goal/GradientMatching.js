@@ -14,7 +14,10 @@ const GradientMatching = () => {
     useEffect(() => {
         const getGoal = async () => {
             const getGoal = await AsyncStorage.getItem('goalInStorage');
-            setGoal(getGoal);
+            if(!getGoal)
+                setGoal(1);
+            else
+                setGoal(getGoal);
         }
         getGoal();
         const loadStartTime = async () => {

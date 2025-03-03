@@ -15,13 +15,16 @@ const MidCircleHome = () => {
 
     useEffect(() => {
         const loadStartTime = async () => {
-            const startTime = await AsyncStorage.getItem('startTime');
-            if (startTime) {
-                const elapsed = Math.floor((Date.now() - parseInt(startTime)) / 1000);
-                setTime(elapsed);
-                setIsRunning(true);
+            let startTime = await AsyncStorage.getItem('startTime');
+            if (!startTime) { // Ensure startTime is set if it doesn't exist
+                startTime = Date.now().toString();
+                await AsyncStorage.setItem('startTime', startTime);
             }
+            const elapsed = Math.floor((Date.now() - parseInt(startTime)) / 1000);
+            setTime(elapsed);
+            setIsRunning(true);
         };
+        
         loadStartTime();
     }, []);
 
@@ -30,7 +33,7 @@ const MidCircleHome = () => {
         if (isRunning) {
             interval = setInterval(() => {
                 setTime(prev => prev + 1);
-                formatTime();
+                // formatTime();
             }, 1000);
         }
         return () => clearInterval(interval);
@@ -38,9 +41,10 @@ const MidCircleHome = () => {
 
     const resetTimer = async () => {
         const longest = await AsyncStorage.getItem('longeststreak');
-        if (parseInt(longest) > formatDays()) {
-            await AsyncStorage.setItem('longeststreak', formatDays() ? formatDays().toString() : '0');
+        if (!longest || parseInt(longest) < formatDays()) {
+            await AsyncStorage.setItem('longeststreak', formatDays().toString());
         }
+        
         await AsyncStorage.removeItem('startTime');
         setTime(0);
         await AsyncStorage.setItem('startTime', Date.now().toString());
@@ -48,20 +52,20 @@ const MidCircleHome = () => {
         console.log(AsyncStorage.getItem('longeststreak'));
     };
 
-    useEffect(() => {
-        const checkAndUpdateStreak = async () => {
-            setTimeout(async () => {
-                const longest = await AsyncStorage.getItem('longeststreak');
-                const currentDays = formatDays();
+    // useEffect(() => {
+    //     const checkAndUpdateStreak = async () => {
+    //         setTimeout(async () => {
+    //             const longest = await AsyncStorage.getItem('longeststreak');
+    //             const currentDays = formatDays();
                 
-                if (!longest || parseInt(longest) < currentDays) {
-                    await AsyncStorage.setItem('longeststreak', currentDays.toString());
-                }
-            }, 86400000); // 24 hours delay
-        };
+    //             if (!longest || parseInt(longest) < currentDays) {
+    //                 await AsyncStorage.setItem('longeststreak', currentDays.toString());
+    //             }
+    //         }, 86400000); // 24 hours delay
+    //     };
     
-        checkAndUpdateStreak();
-    }, [reset]);
+    //     checkAndUpdateStreak();
+    // }, [reset]);
     
 
     function formatTime() {

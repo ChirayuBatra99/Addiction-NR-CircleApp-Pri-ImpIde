@@ -11,7 +11,7 @@ const AboutUs = () => {
             <Header />
             <Text style={styles.para}>
                 -Hello I'm Chirayu Batra :) {"\n"}
-                a software developer, here to apply my knowledge on making applciations that can be helpful to people.
+                a software developer, here to apply my knowledge on making applications that can be helpful to people.
                 {"\n"}{"\n"}
             </Text>
             <Bmac />

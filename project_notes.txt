@@ -18,3 +18,10 @@ Bug:
 delete alignment
 add gpay
 checkmark in todo list
+
+
+
+Commands to build apk:
+ cd android  
+ ./gradlew clean
+ ./gradlew assembleRelease

@@ -17,9 +17,12 @@ const MidCircles = () => {
     const [isRunning, setIsRunning] = useState(false);
 
     useEffect(() => {
-        const getGoal = async() => {
+        const getGoal = async () => {
             const getGoal = await AsyncStorage.getItem('goalInStorage');
-            setGoal(getGoal);
+            if(!getGoal)
+                setGoal(1);
+            else
+                setGoal(getGoal);
         }
         getGoal();
         const loadStartTime = async () => {
@@ -61,7 +64,7 @@ const MidCircles = () => {
                 style={styles.outer}
                 size={330}
                 width={30}
-                fill={Math.floor((time*100)/(getNextMilestone(formatDays())*24*60*60)) == 0 ? 0.3 : Math.floor((time*100)/(getNextMilestone(formatDays())*24*60*60)) }
+                fill={Math.floor((time*100)/(getNextMilestone(formatDays())*24*60*60)) == 0 ? 0.2 : Math.floor((time*100)/(getNextMilestone(formatDays())*24*60*60)) }
                 rotation={0}
                 lineCap='round'
                 tintColor="#f25546"
@@ -71,7 +74,7 @@ const MidCircles = () => {
                 style={styles.mid}
                 size={260}
                 width={30}
-                fill={Math.floor((time*100)/(goal*24*60*60)) ==0 ? 0.3 : Math.floor((time*100)/(goal*24*60*60))}
+                fill={Math.floor((time*100)/(goal*24*60*60)) ==0 ? 0.1 : Math.floor((time*100)/(goal*24*60*60))}
                 rotation={0}
                 lineCap='round'
                 tintColor="#c9c147"
@@ -82,6 +85,7 @@ const MidCircles = () => {
                 size={190}
                 width={30}
                 fill={Math.floor((time*100)/(Longest()*24*60*60))}
+                // fill={Math.floor((time*100)/(Longest()*24*60*60))>100 ? 0.1 : Math.floor((time*100)/(Longest()*24*60*60))}
                 lineCap='round'
                 rotation={0}
                 tintColor="#0eb8e3"
