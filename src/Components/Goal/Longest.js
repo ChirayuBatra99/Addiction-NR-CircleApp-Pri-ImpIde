@@ -23,7 +23,10 @@ const Longest = () => {
     }, [reset]);
 
     
-  return longestDays;
+//   return longestDays;
+        <View>
+            <Text>{longestDays}</Text>
+        </View>
 }
 
 export default Longest

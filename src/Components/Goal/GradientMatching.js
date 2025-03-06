@@ -2,20 +2,33 @@ import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import React, { useEffect, useState, useContext } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getNextMilestone } from '../Milestones/MileStone';
-import Longest from './Longest';
+// import Longest from './Longest';
 import { AppContext } from '../Context/AppContext';
 const { width } = Dimensions.get('window');
 
 const GradientMatching = () => {
+    const ls = AsyncStorage.getItem('longeststreak');
     const [goal, setGoal] = useState(1);
     const [time, setTime] = useState(0);
-    const {reset, setReset} = useContext(AppContext);
+    const { reset, setReset } = useContext(AppContext);
     const [isRunning, setIsRunning] = useState(false);
 
+    const [longest, setLongest] = useState(0);
+    useEffect(() => {
+        const fetchLongestStreak = async () => {
+            const storedLongest = await AsyncStorage.getItem('longeststreak');
+            setLongest(storedLongest ? parseInt(storedLongest) : 0);
+        };
+        fetchLongestStreak();
+    }, [reset]);
+
+    const Ls = async () => {
+        return await AsyncStorage.getItem('longeststreak');
+    }
     useEffect(() => {
         const getGoal = async () => {
             const getGoal = await AsyncStorage.getItem('goalInStorage');
-            if(!getGoal)
+            if (!getGoal)
                 setGoal(1);
             else
                 setGoal(getGoal);
@@ -54,7 +67,6 @@ const GradientMatching = () => {
                 <View style={styles.miniCircleOuter} />
                 <Text style={{ color: 'white', fontSize: 20 }}>Next Rank: </Text>
                 <Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold' }}>{formatDays()}/{getNextMilestone(formatDays())} ({Math.floor((time * 100) / (getNextMilestone(formatDays()) * 24 * 60 * 60))}%)</Text>
-
             </View>
             <View style={styles.individualRow}>
                 <View style={styles.miniCircleMid} />
@@ -64,10 +76,30 @@ const GradientMatching = () => {
             <View style={styles.individualRow}>
                 <View style={styles.miniCircleInner} />
                 <Text style={{ color: 'white', fontSize: 20 }}>Longest: </Text>
-                {Longest() ?
-                    (<Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold' }}>{formatDays()}/{Longest()}  ({Math.floor((time * 100) / (Longest() * 24 * 60 * 60))})%</Text>)
-                    : (<Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold' }}>0 days</Text>)
+                {/* {Longest() ?
+                     (<Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold' }}>{formatDays()}/{Longest()}  ({Math.floor((time * 100) / (Longest() * 24 * 60 * 60))})%</Text>)
+                     : (<Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold' }}>0 days</Text>)
+                 } */}
+                {/* {
+                    // <Text>{Ls()}</Text>
+                    parseInt(Ls()) ?
+                    (<Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold' }}>{formatDays()}/{ parseInt(Ls()) }  ({Math.floor((time * 100) / (parseInt(Ls())  * 24 * 60 * 60))})%</Text>) :
+                    (<Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold' }}>0 days</Text>)
+                 } */}
+
+                {
+                    longest != 0 ?
+                        <Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold' }}>
+                            {formatDays()}/{longest} ({Math.floor((time * 100) / (longest * 24 * 60 * 60))}%)
+                        </Text>
+                        :
+                        <Text style={{ color: 'white', fontSize: 20, fontWeight: 'bold' }}>
+                            0 days
+                        </Text>
+
                 }
+
+
             </View>
         </View>
     )
@@ -77,22 +109,22 @@ export default GradientMatching
 
 const styles = StyleSheet.create({
     miniCircleOuter: {
-        height: width<380 ? 20: 30,
-        width: width<380 ? 20: 30,
+        height: width < 380 ? 20 : 30,
+        width: width < 380 ? 20 : 30,
         borderRadius: 20,
         backgroundColor: '#f25546',
         marginRight: '7%',
     },
     miniCircleMid: {
-        height: width<380 ? 20: 30,
-        width: width<380 ? 20: 30,
+        height: width < 380 ? 20 : 30,
+        width: width < 380 ? 20 : 30,
         borderRadius: 20,
         backgroundColor: '#c9c147',
         marginRight: '7%',
     },
     miniCircleInner: {
-        height: width<380 ? 20: 30,
-        width: width<380 ? 20: 30,
+        height: width < 380 ? 20 : 30,
+        width: width < 380 ? 20 : 30,
         borderRadius: 20,
         backgroundColor: '#0eb8e3',
         marginRight: '7%',

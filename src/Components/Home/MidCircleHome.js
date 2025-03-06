@@ -43,15 +43,14 @@ const MidCircleHome = () => {
 
     const resetTimer = async () => {
         const longest = await AsyncStorage.getItem('longeststreak');
-        if (!longest || parseInt(longest) < formatDays()) {
-            await AsyncStorage.setItem('longeststreak', formatDays().toString());
+        const currentDays = await formatDays();
+        if ( !longest || parseInt(longest) < currentDays) {
+            await AsyncStorage.setItem('longeststreak', currentDays.toString());
         }
-        
         await AsyncStorage.removeItem('startTime');
         setTime(0);
         await AsyncStorage.setItem('startTime', Date.now().toString());
         setReset(!reset);
-        console.log(AsyncStorage.getItem('longeststreak'));
     };
 
     // useEffect(() => {
