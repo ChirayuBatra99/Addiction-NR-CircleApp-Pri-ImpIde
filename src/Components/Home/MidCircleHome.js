@@ -1,11 +1,13 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { View, Text, Button, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import {Dimensions, View, Text, Button, StyleSheet, Image, TouchableOpacity } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Bg from "../../assets/BackG.jpg";
 
 import Icon from 'react-native-vector-icons/Ionicons';
 import { AppContext } from '../Context/AppContext';
 import CircularText from './CircularText';
+import CircularTextSmallScreen from './CircularTextSmallScreen';
+const { width } = Dimensions.get('window');
 
 
 const MidCircleHome = () => {
@@ -127,10 +129,14 @@ const MidCircleHome = () => {
                             <Text style={styles.hsmTexts}>Seconds</Text>
                         </View>
                     </View>
-                    <CircularText text="OFF ADDICTION" radius={150} />
+                    { 
+                        width>380 ?
+                        <CircularText text="OFF ADDICTION" radius={150} />  :
+                        <CircularTextSmallScreen text="OFF ADDICTION" radius={98} />
+                    }
                     {/* <Text style={styles.offAddiction}>OFF Addiction</Text> */}
-                    <TouchableOpacity onPress={resetTimer}>
-                        <Icon name="reload-outline" size={40} color="white" style={styles.resetIconStyles} />
+                    <TouchableOpacity onPress={resetTimer} style={styles.touchOpacContainer}>
+                        <Icon name="reload-outline" size={width<380?30:40} color="white" style={styles.resetIconStyles} />
                     </TouchableOpacity>
                 </View>
             </View>
@@ -143,7 +149,10 @@ const styles = StyleSheet.create({
         color: 'white',
         position: 'absolute',
         bottom: '6%',
-
+    },
+    touchOpacContainer: {
+        left: '38%',     // To This
+        bottom: '8%',      // To This
     },
     resetIconStyles: {
         backgroundColor: 'red',
@@ -151,8 +160,8 @@ const styles = StyleSheet.create({
         overflow: 'hidden',
         padding: 5,
         position: 'relative',
-        left: '38%',
-        bottom: '8%',
+        // left: '38%',     // This
+        // bottom: '8%',    // This
     },
     backStyles: {
         height: '100%',
@@ -213,8 +222,8 @@ const styles = StyleSheet.create({
 
     },
     circle: {
-        height: 300,
-        width: 300,
+        height: width<380?220:300,
+        width: width<380?220:300,
         borderRadius: 200,
         // opacity: 0.3,
         borderWidth: 2,
@@ -226,8 +235,8 @@ const styles = StyleSheet.create({
         // position: 'relative'
     },
     circleTwo: {
-        height: 300,
-        width: 300,
+        height: width<380?220:300,
+        width: width<380?220:300,
         overflow: 'hidden',
         borderWidth: 2,
         position: 'absolute',

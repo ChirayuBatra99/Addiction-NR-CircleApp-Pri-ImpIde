@@ -1,9 +1,10 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import React, { useEffect, useState, useContext } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { getNextMilestone } from '../Milestones/MileStone';
 import Longest from './Longest';
 import { AppContext } from '../Context/AppContext';
+const { width } = Dimensions.get('window');
 
 const GradientMatching = () => {
     const [goal, setGoal] = useState(1);
@@ -76,22 +77,22 @@ export default GradientMatching
 
 const styles = StyleSheet.create({
     miniCircleOuter: {
-        height: 30,
-        width: 30,
+        height: width<380 ? 20: 30,
+        width: width<380 ? 20: 30,
         borderRadius: 20,
         backgroundColor: '#f25546',
         marginRight: '7%',
     },
     miniCircleMid: {
-        height: 30,
-        width: 30,
+        height: width<380 ? 20: 30,
+        width: width<380 ? 20: 30,
         borderRadius: 20,
         backgroundColor: '#c9c147',
         marginRight: '7%',
     },
     miniCircleInner: {
-        height: 30,
-        width: 30,
+        height: width<380 ? 20: 30,
+        width: width<380 ? 20: 30,
         borderRadius: 20,
         backgroundColor: '#0eb8e3',
         marginRight: '7%',

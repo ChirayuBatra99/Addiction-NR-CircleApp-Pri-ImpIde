@@ -1,8 +1,9 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View, Dimensions } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { useNavigation } from '@react-navigation/native';
+const { width } = Dimensions.get('window');
 
 import Icon from 'react-native-vector-icons/AntDesign';
 import { getMilestone } from '../Milestones/MileStone';
@@ -34,7 +35,7 @@ const Rank = () => {
             <View style={styles.plate} >
                 <View style={styles.rankContainer}>
                     <Text style={styles.rankText}>Rank</Text>
-                    <Icon name="infocirlceo" size={20} color="white" style={styles.resetIconStyles} />
+                    <Icon name="infocirlceo" size={width<380?15:20} color="white" style={styles.resetIconStyles} />
                 </View>
                 <Text style={styles.myRank}>
                     "{getMilestone(formatDays())}"
@@ -48,7 +49,8 @@ const Rank = () => {
 const styles = StyleSheet.create({
     myRank: {
         color: '#e1ff00',
-        fontSize: 25,
+        // fontSize: 25,
+        fontSize: width * 0.04,
 
     },
     rankContainer: {
@@ -58,7 +60,8 @@ const styles = StyleSheet.create({
     },
     rankText: {
         color: 'white',
-        fontSize: 18,
+        // fontSize: 18,
+        fontSize: width * 0.04,
         marginRight: '4%',
         fontWeight: 600,
         fontStyle: 'italic',

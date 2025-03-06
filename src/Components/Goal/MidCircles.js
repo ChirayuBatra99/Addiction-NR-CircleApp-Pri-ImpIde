@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Dimensions } from 'react-native'
 import React, { useEffect, useState, useContext } from 'react'
 
 import { AnimatedCircularProgress } from 'react-native-circular-progress';
@@ -7,6 +7,8 @@ import { AppContext } from '../Context/AppContext';
 
 import { getNextMilestone } from '../Milestones/MileStone';
 import Longest from './Longest';
+
+const { width } = Dimensions.get('window');
 
 const MidCircles = () => {
     const [targetDayz, setTargetDayz] = useState(0);
@@ -62,8 +64,8 @@ const MidCircles = () => {
         <View style={styles.plate}>
             <AnimatedCircularProgress
                 style={styles.outer}
-                size={330}
-                width={30}
+                size={width<380? 180 : 330}
+                width={width<380? 20 :30}
                 fill={Math.floor((time*100)/(getNextMilestone(formatDays())*24*60*60)) == 0 ? 0.2 : Math.floor((time*100)/(getNextMilestone(formatDays())*24*60*60)) }
                 rotation={0}
                 lineCap='round'
@@ -72,8 +74,8 @@ const MidCircles = () => {
                 backgroundColor="#3d5875" />
             <AnimatedCircularProgress
                 style={styles.mid}
-                size={260}
-                width={30}
+                size={width<380? 130 : 260}
+                width={width<380? 20 :30}
                 fill={Math.floor((time*100)/(goal*24*60*60)) ==0 ? 0.1 : Math.floor((time*100)/(goal*24*60*60))}
                 rotation={0}
                 lineCap='round'
@@ -82,8 +84,8 @@ const MidCircles = () => {
                 backgroundColor="#3d5875" />
             <AnimatedCircularProgress
                 style={styles.inner}
-                size={190}
-                width={30}
+                size={width<380 ? 80 : 190}
+                width={width<380? 20 :30}
                 fill={Math.floor((time*100)/(Longest()*24*60*60))}
                 // fill={Math.floor((time*100)/(Longest()*24*60*60))>100 ? 0.1 : Math.floor((time*100)/(Longest()*24*60*60))}
                 lineCap='round'

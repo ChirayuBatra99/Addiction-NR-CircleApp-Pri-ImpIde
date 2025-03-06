@@ -2,14 +2,15 @@ import {Dimensions, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 const { width } = Dimensions.get('window');
 
-const CircularText = ({ text, radius }) => {
+const CircularTextSmallScreen = ({ text, radius }) => {
     const characters = text.split("");
-    const angleIncrement = 57 / characters.length; 
+    const angleIncrement = 100 / characters.length; 
 
     return (
         <View style={styles.curvedTextContainer}>
-            {characters.map((char, index) => {
-                const angle = 25 - index * angleIncrement; 
+            <Text style={styles.letter}>OFF ADDICTION</Text>
+            {/* {characters.map((char, index) => {
+                const angle = 45 - index * angleIncrement; 
                 return (
                     <Text
                         key={index}
@@ -18,7 +19,7 @@ const CircularText = ({ text, radius }) => {
                             {
                                 transform: [
                                     { rotate: `${angle}deg` },
-                                    { translateY: radius-15 }, 
+                                    { translateY: radius-14 }, 
                                 ],
                             },
                         ]}
@@ -26,19 +27,18 @@ const CircularText = ({ text, radius }) => {
                         {char}
                     </Text>
                 );
-            })}
+            })} */}
         </View>
     );
 };
 
-export default CircularText
+export default CircularTextSmallScreen;
 
 const styles = StyleSheet.create({
-
 curvedTextContainer: {
     position: "absolute",
     width: 300,
-    height: 300,
+    height: 455,
     alignItems: "center",
     justifyContent: "center",
 },
@@ -49,5 +49,4 @@ letter: {
     fontWeight: "bold",
     color: "silver",
 },
-
-})
+});

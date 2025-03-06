@@ -1,9 +1,10 @@
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import {Dimensions, StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import React from 'react'
 import Icon from 'react-native-vector-icons/Ionicons';
 import Iconi from 'react-native-vector-icons/FontAwesome6';
 
 import { useNavigation } from '@react-navigation/native';
+const { width } = Dimensions.get('window');
 
 const DiaryIcon = () => {
     const navigation = useNavigation();
@@ -30,8 +31,9 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'space-around',
-        paddingBottom: '25%',
-        paddingTop: '80%',
+        bottom: width<380? '5%' : '10%',
+        // paddingBottom: '25%',
+        // paddingTop: width<380? '72%' : '80%',
         paddingHorizontal: '20%',
     },
     circle: {
@@ -43,4 +45,4 @@ const styles = StyleSheet.create({
     textDiary: {
         color: 'white',
     }
-})
+});

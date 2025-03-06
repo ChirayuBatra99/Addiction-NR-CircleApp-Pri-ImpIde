@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <View style={styles.container}>
       <View style={styles.pad}>
-        <Text style={styles.appName}>Better Self </Text>
+        <Text style={styles.appName}>Better Me </Text>
         <Text style={styles.desc}>Keep track of your addictions like Social Media, Vape, Smoking, etc. Write your journal, and follow your to-do list.
           Become better everyday.
         </Text>
@@ -25,15 +25,18 @@ const styles = StyleSheet.create({
     backgroundColor: 'brown',
     padding: '5%',
     borderRadius: 25,
-    width: '70%',
+    width: '80%',
     borderColor: 'yellow',
     borderWidth: 1,
+    alignItems: 'center',
+
   },  
   container: {
     height: '35%',
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: 20,
+    marginBottom: '10%',
   },
   logo: {
     width: 60,
